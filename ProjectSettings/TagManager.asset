@@ -38,7 +38,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Platforms
+  - name: BackgroundA
     uniqueID: 4200219723
     locked: 0
   - name: Default
