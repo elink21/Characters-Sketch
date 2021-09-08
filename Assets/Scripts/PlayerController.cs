@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Vector2 newVelocity;
+    private Animator anim;
+    private BoxCollider2D bc;
 
     [Header("Movement params")]
     [SerializeField]
@@ -23,13 +26,48 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-
+        anim = GetComponent<Animator>();
+        bc = GetComponent<BoxCollider2D>();
     }
 
-    public void moveRight()
+    public void moveRight(InputAction.CallbackContext context )
     {
-        Debug.Log("Right");
-        newVelocity.Set(movementForce* speed, rb.velocity.y);
+        if(context.performed)
+        {
+            Debug.Log("Move Right");
+            anim.SetBool("isWalking", true);
+            newVelocity.Set(movementForce * speed, rb.velocity.y);
+            rb.velocity = newVelocity;
+            sr.flipX = false;
+            bc.offset = new Vector2(Mathf.Abs(bc.offset.x), bc.offset.y);
+        }
+        else if (context.canceled)
+        {
+            cancelMovement();
+        }
+       
+    }
+
+    public void moveLeft(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            anim.SetBool("isWalking", true);
+            newVelocity.Set(-movementForce * speed, rb.velocity.y);
+            rb.velocity = newVelocity;
+            sr.flipX = true;
+            bc.offset = new Vector2(-bc.offset.x, bc.offset.y);
+        }
+        else if (context.canceled)
+        {
+            cancelMovement();
+        }
+    }
+
+    void cancelMovement()
+    {
+        anim.SetBool("isWalking", false);
+        newVelocity.Set(0, rb.velocity.y);
         rb.velocity = newVelocity;
     }
 

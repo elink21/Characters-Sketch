@@ -6565,7 +6565,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7749,7 +7749,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.22541797, y: -0.100771785}
+  m_Offset: {x: 0.3410318, y: -0.100771785}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7760,7 +7760,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.76684654, y: 3.3236496}
+  m_Size: {x: 1.1302041, y: 3.3236496}
   m_EdgeRadius: 0
 --- !u!114 &1792108410
 MonoBehaviour:
@@ -7774,7 +7774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86946465bcd4f24a991d1204fc7e6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.99
+  speed: 5
   movementForce: 2
 --- !u!114 &1792108411
 MonoBehaviour:
@@ -7806,7 +7806,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1792108410}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: moveRight
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7818,7 +7818,19 @@ MonoBehaviour:
     m_ActionId: ea8438bb-f40d-43d7-8718-0dbded1241d5
     m_ActionName: NormalState/MoveRight[/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1792108410}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: moveLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 40d3f546-b9bb-41ee-b3bf-ed766496b168
     m_ActionName: NormalState/MoveLeft
   - m_PersistentCalls:
